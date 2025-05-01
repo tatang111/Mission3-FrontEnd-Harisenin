@@ -1,10 +1,5 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import { InputField } from "./InputField";
-import { SelectSection } from "./selectSection";
+import { SelectSection } from "./SelectSection";
 import { InputFields } from "./InputFields";
-import { axiosInstance } from "../services/api";
-import { PopupContext } from "../SharedContext";
-import axios from "axios";
 import { useFetchMovie } from "../hooks/useFetchMovie";
 
 export const CreateMovie = ({ onClick }) => {

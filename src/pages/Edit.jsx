@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { axiosInstance } from "../services/api";
 import { CreateMovie } from "../components/CreateMovie";
 import { DeleteMovie } from "../components/DeleteMovie";
 import { UpdateMovie } from "../components/UpdateMovie";
