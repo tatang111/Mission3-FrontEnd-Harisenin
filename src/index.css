@@ -8,6 +8,13 @@
     color: #1d4ed8;
 }
 
+.scrollbar-hide {
+  pointer-events: none;
+}
+.scrollbar-hide > * {
+  pointer-events: auto;
+}
+
 .hero-image {
     filter: brightness(0.7);
     transition: transform .5 ease;

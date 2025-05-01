@@ -42,10 +42,10 @@ export const PopupDetailSeries = ({ onClose }) => {
       className="bg-black relative w-[953px] max-w-[85vw]  flex flex-col gap-10 rounded-lg shadow-2xl"
     >
       <header className="relative w-full h-[554px] object-cover ">
-        <img className="w-full h-full object-cover" src={theMovie.src} />
+        <img className="w-full h-full object-cover" src={theMovie?.src} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent "></div>
         <div className="w-full flex flex-col gap-6 text-white absolute bottom-0 md:bottom-20 md:px-20 px-5">
-          <h2 className="text-3xl font-[600]">Ted Lasso</h2>
+          <h2 className="text-3xl font-[600]">{theMovie.title}</h2>
           <div className="flex justify-between">
             <div className="flex gap-4 items-center">
               <button onClick={handleClickMulai} className="px-6 py-2 bg-blue-700 hover:bg-blue-500 rounded-full cursor-pointer">
@@ -64,16 +64,14 @@ export const PopupDetailSeries = ({ onClose }) => {
       <section className="text-white bg-black gap-2 md:px-20 pl-2 md:py-6 md:flex w-full">
         <div className=" md:w-1/2 pl-4 md:pl-0">
           <div className=" flex gap-4 text-gray-300 items-center">
-            <h1>2020</h1>
-            <h1>10 Episode</h1>
+            <h1>{theMovie?.release}</h1>
+            <h1>{theMovie.duration}m</h1>
             <button className="border-1 rounded-full w-10 h-10 text-lg">
-              16+
+              {theMovie?.age_rating ? theMovie?.age_rating : theMovie?.rating}
             </button>
           </div>
           <p className="pr-10">
-            Pelatih sepak bola perguruan tinggi Amerika Ted Lasso pergi ke
-            London untuk mengelola AFC Richmond, tim sepak bola Liga Utama
-            Inggris yang kesulitan.
+            {theMovie.description}
           </p>
         </div>
         <div className="md:w-1/2 pl-4  pt-2 pr-2">
@@ -83,8 +81,7 @@ export const PopupDetailSeries = ({ onClose }) => {
               Cast <span className="ml-[70px]">: </span>
             </h1>
             <p className="text-white">
-              Jason Sudeikis, Brett Goldstein, Brendan Hunt, Nick Mohammed, dan
-              lain-lain
+            {theMovie.cast.join(", ")}
             </p>
           </div>
           <div className="grid grid-cols-[auto_1fr] gap-x-2">
@@ -92,14 +89,14 @@ export const PopupDetailSeries = ({ onClose }) => {
             <h1 className="text-gray-300 whitespace-nowrap">
               Genre <span className="ml-[58px]">: </span>
             </h1>
-            <p className="text-white">Komedi, Drama, Olahraga</p>
+            <p className="text-white"> {theMovie.genre.join(", ")}</p>
           </div>
           <div className="grid grid-cols-[auto_1fr] gap-x-2">
             {" "}
             <h1 className="text-gray-300 whitespace-nowrap">
               Pembuat Film <span className="ml-1">: </span>
             </h1>
-            <p className="text-white">Brendan Hunt, Joe Killy, Bill Lawrence</p>
+            <p className="text-white"> {theMovie.filmMaker.join(", ")}</p>
           </div>
         </div>
       </section>

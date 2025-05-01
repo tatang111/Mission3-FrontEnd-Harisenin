@@ -10,6 +10,7 @@ import { WatchSeries } from "./pages/WatchSeries";
 import { Langganan } from "./pages/Langganan";
 import { Daftar } from "./pages/Daftar";
 import { Masuk } from "./pages/Masuk";
+import { Edit } from "./pages/Edit";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/film" element={<Film />} />
         <Route path="/daftarsaya" element={<DaftarSaya />} />
         <Route path="/langganan" element={<Langganan />} />
+        <Route path="/edit" element={<Edit />} />
         <Route path="/watchfilm" element={<WatchFilm />} />
         <Route path="/watchseries" element={<WatchSeries />} />
       </Routes>
