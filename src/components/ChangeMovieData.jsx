@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { SelectSection } from "./selectSection";
+import { SelectSection } from "./SelectSection";
 import { InputFields } from "./InputFields";
 import { axiosInstance } from "../services/api";
 import { useFetchMovie } from "../hooks/useFetchMovie";
