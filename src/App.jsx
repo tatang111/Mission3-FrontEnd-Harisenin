@@ -11,6 +11,7 @@ import { Langganan } from "./pages/Langganan";
 import { Daftar } from "./pages/Daftar";
 import { Masuk } from "./pages/Masuk";
 import { Edit } from "./pages/Edit";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/edit" element={<Edit />} />
         <Route path="/watchfilm" element={<WatchFilm />} />
         <Route path="/watchseries" element={<WatchSeries />} />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </PopupProvider>
   );
