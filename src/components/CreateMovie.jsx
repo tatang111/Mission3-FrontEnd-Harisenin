@@ -67,7 +67,8 @@ export const CreateMovie = ({ onClick }) => {
       .create-movie-close-btn {
         top: 10px !important;
         right: 10px !important;
-        padding: 0.5rem !important;
+        padding: .7rem 1.2rem !important;
+
       }
       
       .create-movie-image-upload {
@@ -130,7 +131,7 @@ export const CreateMovie = ({ onClick }) => {
           <h2 className="text-center text-2xl font-[600] mb-6">Create Movie</h2>
           <button
             onClick={onClick}
-            className="absolute create-movie-close-btn z-20 top-5 cursor-pointer rounded-full p-2 px-4 bg-blue-600 right-5 shadow-lg hover:bg-blue-700 transition-all duration-200 hover:scale-105 text-gray-100 text-md font-medium"
+            className="absolute create-movie-close-btn z-20 top-5 cursor-pointer rounded-full md:p-2 md:px-4 bg-blue-600 right-5 shadow-lg hover:bg-blue-700 transition-all duration-200 hover:scale-105 text-gray-100 text-md font-medium"
           >
             X
           </button>

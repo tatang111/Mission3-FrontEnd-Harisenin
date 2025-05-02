@@ -67,7 +67,7 @@ export const UpdateMovie = ({ onClick }) => {
           .update-movie-close-btn {
             top: 10px !important;
             right: 10px !important;
-            padding: 0.5rem !important;
+            padding: .7rem 1.2rem !important;
           }
           
           .update-movie-confirm-popup {

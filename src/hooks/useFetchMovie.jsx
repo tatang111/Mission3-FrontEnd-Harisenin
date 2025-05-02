@@ -125,7 +125,7 @@ export const useFetchMovie = (onClick, movieId) => {
           setIsCreate(false);
           onClick();
           resetForm();
-        }, 6500);
+        }, 7500);
       }
     } catch (error) {
       setIsCreate(false);
@@ -217,7 +217,7 @@ export const useFetchMovie = (onClick, movieId) => {
         setTimeout(() => {
           setIsCreate(false);
           onClick();
-        }, 6500);
+        }, 7500);
       }
     } catch (error) {
       setIsCreate(false);
