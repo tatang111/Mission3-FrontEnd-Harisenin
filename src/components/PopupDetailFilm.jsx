@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { PopupEpisode } from "./PopupEpisode";
 import { PopupEpisodes } from "./PopupEpisodes";
 import { RekomendasiSerupa } from "./RekomendasiSerupa";
+import { useNavigate } from "react-router-dom";
 
 export const PopupDetailFilm = ({ onClose }) => {
   const [theMovie, setTheMovie] = useState(() => {
@@ -12,6 +13,7 @@ export const PopupDetailFilm = ({ onClose }) => {
   });
   const [loading, setLoading] = useState(false);
   const popupRef = useRef(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (popupRef.current) {
@@ -32,7 +34,7 @@ export const PopupDetailFilm = ({ onClose }) => {
   }, [onClose]);
 
   const handleClickMulai = () => {
-    window.location.pathname = "watchfilm";
+    navigate("/watchfilm");
   };
 
   if (loading) return <p>loading...</p>;

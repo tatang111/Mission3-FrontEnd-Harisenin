@@ -104,7 +104,7 @@ export const Navbar = ({ genre }) => {
             </button>
             <Link
               to="/edit"
-              className="pl-[2px] py-1 mb-2 hover:text-blue-700 cursor-pointer"
+              className="pl-[2px] md:hidden py-1 mb-2 hover:text-blue-700 cursor-pointer"
             >
               <i className="fa-solid fa-user">
                 <FontAwesomeIcon icon={faPenToSquare} />{" "}

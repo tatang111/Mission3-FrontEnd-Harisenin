@@ -67,7 +67,7 @@ export const CreateMovie = ({ onClick }) => {
       .create-movie-close-btn {
         top: 10px !important;
         right: 10px !important;
-        padding: .7rem 1.2rem !important;
+        padding: 4px 12px !important;
 
       }
       

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { CreateMovie } from "../components/CreateMovie";
 import { DeleteMovie } from "../components/DeleteMovie";
 import { UpdateMovie } from "../components/UpdateMovie";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export const Edit = () => {
   const [events, setEvents] = useState("");
@@ -11,7 +14,7 @@ export const Edit = () => {
   });
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const passwordAdmin = import.meta.env.VITE_PASS_ADMIN
+  const passwordAdmin = import.meta.env.VITE_PASS_ADMIN;
 
   const buttonClass =
     "px-6 py-3 md:px-12 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg font-medium shadow-lg hover:from-purple-700 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 text-white focus:ring-blue-400 h-12 cursor-pointer text-sm md:text-base";
@@ -38,6 +41,12 @@ export const Edit = () => {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center p-4">
         <div className="bg-gray-800 p-8 rounded-lg shadow-xl max-w-md w-full">
+          <Link
+            to="/series"
+            className="border p-2 px-3 cursor-default hover:from-purple-500 hover:to-blue-500 rounded-full bg-gradient-to-r from-purple-600 to-blue-500"
+          >
+            <FontAwesomeIcon className="text-white" icon={faArrowLeft} />
+          </Link>
           <h2 className="text-2xl font-bold text-white mb-6 text-center">
             Admin Login
           </h2>
@@ -86,6 +95,9 @@ export const Edit = () => {
             >
               Logout
             </button>
+            <Link to="/series" className="text-sm cursor-default bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-md transition-colors">
+              MainPage
+            </Link>
           </div>
         </div>
       </div>

@@ -5,9 +5,9 @@ import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 import { PaymentCodeGenerator } from "./PaymentCodeGenerator";
 import { PopupContext } from "../SharedContext";
+import { useNavigate } from "react-router-dom";
 
 export const ShowPayment = () => {
-  // const {isSubscribe, setIsSubscribe} = useContext(PopupContext)
   const [menit, setMenit] = useState(15);
   const [detik, setDetik] = useState(0);
   const [infoPayments, setInfoPayments] = useState(() => {
@@ -16,6 +16,7 @@ export const ShowPayment = () => {
   });
   const [paymentCode, setPaymentCode] = useState("");
   const {versiPembayaran, setVersiPembayaran} = useContext(PopupContext)
+  const navigate = useNavigate()
  
   useEffect(() => {
     setPaymentCode(PaymentCodeGenerator());
@@ -53,7 +54,7 @@ export const ShowPayment = () => {
   const handlePayment = () => {
     localStorage.setItem("isSubscribe", JSON.stringify(true))
     localStorage.setItem("expiryDate", JSON.stringify(date30DaysLater))
-    window.location.pathname = "series"
+    navigate("/series")
   };
 
   return (

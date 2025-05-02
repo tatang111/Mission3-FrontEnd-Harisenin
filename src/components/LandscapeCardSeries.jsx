@@ -9,9 +9,11 @@ import { useContext } from "react";
 import { PopupContext } from "../SharedContext";
 import { PopupDetailSeries } from "./PopupDetailSeries";
 import { NewEpisodeSeries } from "./NewEpisodeSeries";
+import { useNavigate } from "react-router-dom";
 
 export const LandscapeCardSeries = ({ movie }) => {
   const { setDetailClickingSeries } = useContext(PopupContext);
+  const navigate = useNavigate()
 
   const handleClickDetailSeries = () => {
     setDetailClickingSeries(true);
@@ -50,7 +52,7 @@ export const LandscapeCardSeries = ({ movie }) => {
   };
 
   const handlePlaySeries = () => {
-    window.location.pathname = "watchseries";
+    navigate("/watchseries")
   };
 
   return (

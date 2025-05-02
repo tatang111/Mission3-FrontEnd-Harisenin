@@ -11,10 +11,12 @@ import { PopupContext } from "../SharedContext";
 import { TopTen } from "./TopTen";
 import { NewEpisode } from "./NewEpisode";
 import { Premium } from "./Premium";
+import { useNavigate } from "react-router-dom";
 
 export const PotraitCard = ({ movie }) => {
   const { setDetailClickingSeries, setDetailClickingFilm } =
     useContext(PopupContext);
+    const navigate = useNavigate()
 
     const getImagePath = () => {
       if (movie?.imageUrl?.includes("i.ibb.co")) {
@@ -39,7 +41,7 @@ export const PotraitCard = ({ movie }) => {
       cast: movie.cast,
     };
     localStorage.setItem("movie", JSON.stringify(theMovie));
-    if (window.location.pathname.includes("/series")) {
+    if (window.location.hash.includes("/series")) {
       setDetailClickingSeries(true);
     } else {
       setDetailClickingFilm(true);
@@ -66,7 +68,7 @@ export const PotraitCard = ({ movie }) => {
         cast: movie.cast,
       };
       localStorage.setItem("movie", JSON.stringify(theMovie));
-      if (window.location.pathname.includes("/series")) {
+      if (window.location.hash.includes("/series")) {
         setDetailClickingSeries(true);
       } else {
         setDetailClickingFilm(true);
@@ -75,10 +77,10 @@ export const PotraitCard = ({ movie }) => {
   };
 
   const handleWatch = () => {
-    if (window.location.pathname.includes("/series")) {
-      window.location.pathname = "watchseries";
+    if (window.location.hash.includes("/series")) {
+      navigate("/watchseries")
     } else {
-      window.location.pathname = "watchfilm";
+      navigate("/watchfilm")
     }
   };
 

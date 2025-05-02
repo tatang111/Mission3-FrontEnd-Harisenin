@@ -94,7 +94,7 @@ export const DeleteMovie = ({ onClick }) => {
       >
         <button
           onClick={onClick}
-          className="absolute z-20 top-3 md:top-5 cursor-pointer rounded-full p-3 md:p-2 px-5 md:px-4 bg-blue-600 right-3 md:right-5 shadow-lg hover:bg-blue-700 transition-all duration-200 hover:scale-105 text-gray-100 text-sm md:text-md font-medium"
+          className="absolute z-20 top-3 md:top-5 cursor-pointer rounded-full p-1 md:p-2 px-3 md:px-4 bg-blue-600 right-3 md:right-5 shadow-lg hover:bg-blue-700 transition-all duration-200 hover:scale-105 text-gray-100 text-sm md:text-md font-medium"
         >
           X
         </button>

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { PopupEpisode } from "./PopupEpisode";
 import { PopupEpisodes } from "./PopupEpisodes";
+import { useNavigate } from "react-router-dom";
 
 export const PopupDetailSeries = ({ onClose }) => {
   const [theMovie, setTheMovie] = useState(() => {
@@ -11,6 +12,7 @@ export const PopupDetailSeries = ({ onClose }) => {
   });
   const [loading, setLoading] = useState(false);
   const popupRef = useRef(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (popupRef.current) {
@@ -31,7 +33,7 @@ export const PopupDetailSeries = ({ onClose }) => {
   }, [onClose]);
 
   const handleClickMulai = () => {
-    window.location.pathname = "watchseries"
+    navigate("/watchseries")
   }
 
   if (loading) return <p>loading...</p>;

@@ -8,9 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { PopupContext } from "../SharedContext";
 import { PopupDetailSeries } from "./PopupDetailSeries";
+import { useNavigate } from "react-router-dom";
 
 export const LandscapeCardFilm = ({ movie }) => {
   const { setDetailClickingFilm } = useContext(PopupContext);
+  const navigate = useNavigate()
 
   const handleClickDetail = () => {
     setDetailClickingFilm(true);
@@ -49,7 +51,7 @@ export const LandscapeCardFilm = ({ movie }) => {
   };
 
   const handleWatchSeries = () => {
-    window.location.pathname = "watchfilm";
+    navigate("/watchfilm");
   };
 
   return (
