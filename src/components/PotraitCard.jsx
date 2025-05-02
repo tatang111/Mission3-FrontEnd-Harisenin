@@ -16,6 +16,16 @@ export const PotraitCard = ({ movie }) => {
   const { setDetailClickingSeries, setDetailClickingFilm } =
     useContext(PopupContext);
 
+    const getImagePath = () => {
+      if (movie?.imageUrl?.includes("i.ibb.co")) {
+        const result = movie.imageUrl.replace("i.ibb.co", "i.ibb.co.com");
+        return result;
+      } else if (movie?.imageUrl?.length < 15) {
+        return `/imgpotrait/${movie.imageUrl}`;
+      }
+      return movie.imageUrl;
+    };
+
   const handleClickDetail = () => {
     const theMovie = {
       release: movie.release,
@@ -81,7 +91,7 @@ export const PotraitCard = ({ movie }) => {
         <div className="relative w-full h-full overflow-hidden">
           <img
             className="object-cover w-full h-full transition-all duration-300 group-hover:scale-105"
-            src={`/imgpotrait/${movie?.imageUrl}`}
+            src={getImagePath()}
             alt=""
             loading="lazy"
           />
