@@ -37,7 +37,7 @@ export const DaftarSaya = () => {
         <Navbar />
         <main className="md:px-20 ml-4 my-[20px] md:my-[50px] flex flex-col gap-8">
           <h1 className="text-3xl font-[600]">Daftar Saya</h1>
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-x-1 gap-y-5 md:gap-5">
+          <div className="grid grid-cols-3 md:grid-cols-5 -ml-2 pr-2 gap-x-1 gap-y-5 md:gap-5">
             {movies.map((movie) => (
               <PotraitCard key={movie.id} movie={movie} />
             ))}
@@ -53,13 +53,3 @@ export const DaftarSaya = () => {
     </div>
   );
 };
-
-const movies = [
-  {
-    src: "/imgpotrait/Number=1.png",
-    duration: "2h 1m",
-    genre: "Comedy • Action • Comedy",
-    info: <TopTen />,
-    info2: <NewEpisode />,
-  },
-];

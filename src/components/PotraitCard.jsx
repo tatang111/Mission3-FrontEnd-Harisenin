@@ -87,7 +87,7 @@ export const PotraitCard = ({ movie }) => {
   return (
     <section
       onClick={handleMobileClick}
-      className="flex-shrink-0 w-[120px]  h-[175px] md:w-[200px] md:h-[300px] relative group"
+      className="flex-shrink-0 w-[115px] h-[175px] md:w-[200px] md:h-[300px] relative group"
     >
       <div className="relative h-full w-full overflow-hidden rounded-lg transition-all duration-300 group-hover:z-20">
         <div className="relative w-full h-full overflow-hidden">
