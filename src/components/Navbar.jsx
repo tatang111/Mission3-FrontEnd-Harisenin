@@ -25,8 +25,8 @@ export const Navbar = ({ genre }) => {
   return (
     <nav className="navbar w-full bg-black text-white md:h-18 px-2 md:px-14 py-4  items-center justify-between flex">
       <section className="left-nav flex md:gap-8 items-center justify-center gap-2">
-        <div className="flex items-center gap-1 text-3xl font-[600]">
-          <i className="fa-solid fa-film text-3xl">
+        <div className="flex items-center gap-1 text-xl font-[600]">
+          <i className="fa-solid fa-film text-2xl mb-2">
             <FontAwesomeIcon icon={faFilm} />{" "}
           </i>
           <p className="mb-1">Chill</p>
@@ -49,7 +49,7 @@ export const Navbar = ({ genre }) => {
         </Link>
         <Link
           to="/daftarsaya"
-          className={`md:flex items-center ${
+          className={`md:flex items-center line-clamp-1 ${
             location.pathname === "/daftarsaya"
               ? "text-[var(--accent-gold)]"
               : ""
