@@ -53,7 +53,7 @@ export const Edit = () => {
           <form onSubmit={handleLogin} className="space-y-3">
             <div>
               <label className="grid gap-2 text-sm font-medium text-gray-300 mb-2">
-                Password 
+                Password (hariseninbootcamp)
                 <input
                   type="password"
                   value={password}
