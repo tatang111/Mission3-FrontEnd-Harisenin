@@ -113,7 +113,7 @@ export const CreateMovie = ({ onClick }) => {
             Movie created successfully! 🎬
           </p>
           <div className="animate-pulse">
-            <p className="text-sm text-blue-200">Redirecting shortly...</p>
+            <p className="text-sm text-blue-200">Redirecting shortly....</p>
           </div>
         </div>
       </div>
