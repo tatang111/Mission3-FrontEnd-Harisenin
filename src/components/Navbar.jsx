@@ -25,7 +25,7 @@ export const Navbar = ({ genre }) => {
   return (
     <nav className="navbar w-full bg-black text-white md:h-18 px-2 md:px-14 py-4  items-center justify-between flex">
       <section className="left-nav flex md:gap-8 items-center justify-center gap-2">
-        <div className="flex items-center gap-1 md:text-3xl text-xl font-[600]">
+        <div className="flex items-center gap-1 md:text-3xl -mb-1 md:mb-0 text-xl font-[600]">
           <i className="fa-solid fa-film text-2xl mb-2 md:mb-1">
             <FontAwesomeIcon icon={faFilm} />{" "}
           </i>
@@ -124,5 +124,5 @@ export const Navbar = ({ genre }) => {
         </div>
       </section>
     </nav>
-  );
-};
+  )
+}
