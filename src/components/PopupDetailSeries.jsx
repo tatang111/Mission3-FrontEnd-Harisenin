@@ -32,6 +32,16 @@ export const PopupDetailSeries = ({ onClose }) => {
     };
   }, [onClose]);
 
+  const getImagePath = () => {
+    if (theMovie?.src?.includes("i.ibb.co")) {
+      const result = theMovie.src.replace("i.ibb.co", "i.ibb.co.com");
+      return result;
+    } else if (theMovie?.src?.length < 15) {
+      return `/imgpotrait/${theMovie.src}`;
+    }
+    return theMovie.src;
+  };
+
   const handleClickMulai = () => {
     navigate("/watchseries")
   }
@@ -44,7 +54,7 @@ export const PopupDetailSeries = ({ onClose }) => {
       className="bg-black relative w-[953px] max-w-[85vw]  flex flex-col gap-10 rounded-lg shadow-2xl"
     >
       <header className="relative w-full h-[554px] object-cover ">
-        <img className="w-full h-full object-cover" src={theMovie?.src} />
+        <img className="w-full h-full object-cover" src={getImagePath()} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent "></div>
         <div className="w-full flex flex-col gap-6 text-white absolute bottom-0 md:bottom-20 md:px-20 px-5">
           <h2 className="text-3xl font-[600]">{theMovie.title}</h2>

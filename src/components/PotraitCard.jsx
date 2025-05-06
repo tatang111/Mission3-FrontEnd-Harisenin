@@ -32,7 +32,7 @@ export const PotraitCard = ({ movie }) => {
     const theMovie = {
       release: movie.release,
       title: movie.title,
-      src: `/imgpotrait/${movie.imageUrl}`,
+      src: movie.imageUrl,
       genre: movie.genre,
       duration: movie.duration,
       description: movie.description,
@@ -59,7 +59,7 @@ export const PotraitCard = ({ movie }) => {
       const theMovie = {
         release: movie.release,
         title: movie.title,
-        src: `/imgpotrait/${movie.imageUrl}`,
+        src: movie.imageUrl,
         genre: movie.genre,
         duration: movie.duration,
         description: movie.description,
