@@ -2,7 +2,6 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { PopupContext } from "../SharedContext";
 import { MovieToDelete } from "./MovieToDelete";
 import { axiosInstance } from "../services/api";
-import axios from "axios";
 
 export const DeleteMovie = ({ onClick }) => {
   const { allMovies, setAllMovies } = useContext(PopupContext);
@@ -16,10 +15,7 @@ export const DeleteMovie = ({ onClick }) => {
   useEffect(() => {
     try {
       setLoading(true);
-      const filtered = allMovies.filter(
-        (movie) => movie?.id < 33 || movie?.id > 65
-      );
-      setMovies(filtered);
+      setMovies(allMovies);
     } catch (error) {
       console.log(error);
     } finally {
@@ -38,6 +34,7 @@ export const DeleteMovie = ({ onClick }) => {
       setShowPopup(false);
       setSuccessDelete(true);
       if (response.status === 200) {
+        // movies id < 33 | id > 65
         const filtered = movies.filter((movie) => movie.id !== movieData.id);
         setMovies(filtered);
         setAllMovies(filtered);
@@ -74,12 +71,16 @@ export const DeleteMovie = ({ onClick }) => {
               </svg>
             </div>
           </div>
-          <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Success!</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+            Success!
+          </h3>
           <p className="text-base md:text-lg text-blue-100 mb-4 md:mb-6">
             Movie deleted successfully! 🎬
           </p>
           <div className="animate-pulse">
-            <p className="text-xs md:text-sm text-blue-200">Redirecting shortly...</p>
+            <p className="text-xs md:text-sm text-blue-200">
+              Redirecting shortly...
+            </p>
           </div>
         </div>
       </div>
@@ -98,21 +99,31 @@ export const DeleteMovie = ({ onClick }) => {
         >
           X
         </button>
-        <h2 className="text-center text-xl md:text-2xl font-[600] mb-4 md:mb-6">Delete Movie</h2>
+        <h2 className="text-center text-xl md:text-2xl font-[600] mb-4 md:mb-6">
+          Delete Movie
+        </h2>
         <main className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
-          {movies.map((movie) => (
-            <MovieToDelete
-              key={movie.id}
-              movie={movie}
-              onClick={handleDelete}
-            />
-          ))}
+          {movies.map((movie) => {
+            if (movie.id < 33 || movie.id > 65) {
+              return (
+                <MovieToDelete
+                  key={movie.id}
+                  movie={movie}
+                  onClick={handleDelete}
+                />
+              );
+            }
+          })}
         </main>
         {showPopup && (
           <section className="fixed inset-0 flex justify-center items-center z-50 bg-black/70">
             <div className="bg-gray-700 p-5 md:p-7 w-full max-w-xs sm:max-w-md mx-4 rounded-xl flex flex-col gap-3 md:gap-5">
-              <h3 className="text-lg md:text-xl font-bold">Delete {movieData?.title}?</h3>
-              <h4 className="text-sm md:text-md">Are you sure you want to delete this movie?</h4>
+              <h3 className="text-lg md:text-xl font-bold">
+                Delete {movieData?.title}?
+              </h3>
+              <h4 className="text-sm md:text-md">
+                Are you sure you want to delete this movie?
+              </h4>
               <div className="mt-4 md:mt-6 flex gap-2 justify-end">
                 <button
                   onClick={() => setShowPopup(false)}

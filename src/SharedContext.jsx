@@ -11,14 +11,10 @@ export function PopupProvider({ children }) {
   const [allMovies, setAllMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const handleCreateMovie = () => {
-    setAllMovies(prevMovies => ({}))
-  }
-
   useEffect(() => {
     const getMovie = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
         const response = await axiosInstance.get("/movie");
         setAllMovies(response.data);
       } catch (error) {

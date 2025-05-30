@@ -8,6 +8,7 @@ import { PopupContext } from "../SharedContext";
 import { useNavigate } from "react-router-dom";
 
 export const ShowPayment = () => {
+  const { setVersiPembayaran} = useContext(PopupContext)
   const [menit, setMenit] = useState(15);
   const [detik, setDetik] = useState(0);
   const [infoPayments, setInfoPayments] = useState(() => {
@@ -15,7 +16,6 @@ export const ShowPayment = () => {
     return saved ? JSON.parse(saved) : null;
   });
   const [paymentCode, setPaymentCode] = useState("");
-  const {versiPembayaran, setVersiPembayaran} = useContext(PopupContext)
   const navigate = useNavigate()
  
   useEffect(() => {
@@ -55,6 +55,10 @@ export const ShowPayment = () => {
     localStorage.setItem("isSubscribe", JSON.stringify(true))
     localStorage.setItem("expiryDate", JSON.stringify(date30DaysLater))
     navigate("/series")
+     window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
   };
 
   return (

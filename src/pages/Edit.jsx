@@ -95,7 +95,10 @@ export const Edit = () => {
             >
               Logout
             </button>
-            <Link to="/series" className="text-sm cursor-default bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-md transition-colors">
+            <Link
+              to="/series"
+              className="text-sm cursor-default bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-md transition-colors"
+            >
               MainPage
             </Link>
           </div>

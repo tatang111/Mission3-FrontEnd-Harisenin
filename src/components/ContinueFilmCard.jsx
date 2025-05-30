@@ -1,5 +1,4 @@
 import { ArrowScrollXContinue } from "./ArrowScrollXContinue";
-import { useGetMovie } from "../hooks/useGetMovie";
 import { LandscapeCardFilm } from "./LandscapeCardFilm";
 import { useContext, useEffect, useRef, useState } from "react";
 import { PopupContext } from "../SharedContext";

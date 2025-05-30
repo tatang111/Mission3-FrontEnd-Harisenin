@@ -8,6 +8,7 @@ export const ContinueSeriesCard = () => {
   const [movies, setMovies] = useState([]);
   const scrollContainerRef = useRef(null);
 
+  console.log(allMovies)
   useEffect(() => {
     try {
       const getMovie = allMovies.filter(

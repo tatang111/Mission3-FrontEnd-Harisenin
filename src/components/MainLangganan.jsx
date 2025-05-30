@@ -11,7 +11,7 @@ import { ShowKeluarga } from "./ShowKeluarga";
 import { ShowPayment } from "./ShowPayment";
 
 export const MainLangganan = () => {
-  const { versiPembayaran, setVersiPembayaran } = useContext(PopupContext);
+  const { versiPembayaran} = useContext(PopupContext);
 
   return (
     <main className="bg-black text-white">

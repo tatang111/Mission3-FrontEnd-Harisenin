@@ -3,9 +3,9 @@ import { LanggananCard } from "./LanggananCard";
 import { PopupContext } from "../SharedContext";
 
 export const ShowKeluarga = () => {
+  const { setVersiPembayaran } = useContext(PopupContext);
   const [selectedOption, setSelectedOption] = useState("");
   const [voucherCode, setVoucherCode] = useState("");
-  const { setVersiPembayaran } = useContext(PopupContext);
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
