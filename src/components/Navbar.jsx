@@ -65,7 +65,17 @@ export const Navbar = ({ genre }) => {
               : ""
           } hover:text-[var(--accent-gold)]`}
         >
-          Edit
+          Edit Film
+        </Link>
+        <Link
+          to="/cari"
+          className={`hidden md:flex items-center ${
+            location.pathname === "/cari"
+              ? "text-[var(--accent-gold)]"
+              : ""
+          } hover:text-[var(--accent-gold)]`}
+        >
+          Cari Film
         </Link>
         {genre && <ShowGenreMobile />}
       </section>
@@ -109,7 +119,16 @@ export const Navbar = ({ genre }) => {
               <i className="fa-solid fa-user">
                 <FontAwesomeIcon icon={faPenToSquare} />{" "}
               </i>
-              <span className="ml-1">Edit Movie</span>{" "}
+              <span className="ml-1">Edit Film</span>{" "}
+            </Link>
+            <Link
+              to="/cari"
+              className="pl-[2px] md:hidden py-1 mb-2 hover:text-blue-700 cursor-pointer"
+            >
+              <i className="fa-solid fa-user">
+                <FontAwesomeIcon icon={faPenToSquare} />{" "}
+              </i>
+              <span className="ml-1">Cari Film</span>{" "}
             </Link>
             <button
               onClick={handleKeluar}

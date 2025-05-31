@@ -12,6 +12,7 @@ import { Daftar } from "./pages/Daftar";
 import { Masuk } from "./pages/Masuk";
 import { Edit } from "./pages/Edit";
 import NotFoundPage from "./pages/NotFoundPage";
+import { Cari } from "./pages/Cari";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/profil" element={<Profil />} />
         <Route path="/series" element={<Series />} />
         <Route path="/film" element={<Film />} />
+        <Route path="/cari" element={<Cari />} />
         <Route path="/daftarsaya" element={<DaftarSaya />} />
         <Route path="/langganan" element={<Langganan />} />
         <Route path="/edit" element={<Edit />} />

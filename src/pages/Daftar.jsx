@@ -1,43 +1,57 @@
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faEye, faEyeSlash, faFilm } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useRef, useState } from "react";
+import { useFormik } from "formik";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import * as Yup from "yup";
 
 export const Daftar = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
   const confirmPasswordRef = useRef(null);
   const navigate = useNavigate();
 
-  const handleDaftarClick = (e) => {
-    e.preventDefault();
-
-    if (!username || !password || !passwordConfirm) {
-      return;
-    }
-
-    if (passwordConfirm !== password) {
-      setError("Konfirmasi salah");
-      setPasswordConfirm("");
-      confirmPasswordRef.current.focus();
-      return;
-    }
-
-    const userIdentity = {
-      username: username,
-      password: password,
-    };
-    localStorage.setItem("infoUser", JSON.stringify(userIdentity));
-    navigate("/masuk");
-  };
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+      passwordConfirm: "",
+    },
+    onSubmit: (values) => {
+      if (values.password !== values.passwordConfirm) {
+        formik.setFieldValue("passwordConfirm", "")
+        confirmPasswordRef.current.focus();
+        return;
+      }
+      const userIdentity = {
+        username: values.username,
+        password: values.password,
+      };
+      localStorage.setItem("infoUser", JSON.stringify(userIdentity));
+      navigate("/masuk");
+    },
+    validationSchema: Yup.object({
+      username: Yup.string()
+        .min(3, "Minimal 3 karakter")
+        .max(15, "Maximal 15 karakter")
+        .required("Username wajib diisi"),
+      password: Yup.string()
+        .min(8, "Minimal 8 karakter")
+        .matches(
+          /^(?=.*[a-zA-Z])(?=.*[0-9])/,
+          "Minimal terdapat huruf dan angka"
+        )
+        .required("Password wajib diisi"),
+      passwordConfirm: Yup.string().required("Konfirmasi password salah"),
+    }),
+  });
 
   return (
     <main className="forbglayar bg-[url(/auth/daftar.jpg)] py-6 relative md:flex justify-center h-screen">
-      <form className="forForm w-90/100 max-w-[420px] top-1/2 left-1/2 -translate-1/2 md:left-0 md:-translate-0  md:h-full overflow-y-hidden md:mt-[0px] border border-gray-500  p-[40px] pt-[20px] md:pt-[13px] flex flex-col gap-[15px] rounded-md bg-[#181A1CD6] text-white md:top-0 relative ">
+      <form
+        onSubmit={formik.handleSubmit}
+        className="forForm w-90/100 max-w-[420px] top-1/2 left-1/2 -translate-1/2 md:left-0 md:-translate-0  md:h-full overflow-y-hidden md:mt-[0px] border border-gray-500  p-[40px] pt-[20px] md:pt-[13px] flex flex-col gap-[15px] rounded-md bg-[#181A1CD6] text-white md:top-0 relative "
+      >
         <header className="grid gap-4">
           <h1 className="text-center flex justify-center mt-1 gap-1 text-4xl font-bold">
             <FontAwesomeIcon icon={faFilm} />
@@ -51,10 +65,18 @@ export const Daftar = () => {
         <section>
           <div className="username">
             <label className="flex gap-2 flex-col">
-              Username
+              <p className="">
+                Username{" "}
+                {formik.touched.username && formik.errors.username && (
+                  <span className="text-red-500 ml-2">
+                    {formik.errors.username}
+                  </span>
+                )}
+              </p>
               <input
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                name="username"
+                value={formik.values.username}
+                onChange={formik.handleChange}
                 placeholder="Masukkan username"
                 type="text"
                 className="p-[10px] border-gray-500 border-2 rounded-full bg-transparent"
@@ -64,10 +86,18 @@ export const Daftar = () => {
 
           <div className="kata-password flex flex-col gap-[15px]">
             <label className="flex gap-2 flex-col relative">
-              Kata Sandi
+              <p className="">
+                Kata Sandi{" "}
+                {formik.touched.password && formik.errors.password && (
+                  <span className="text-red-500 ml-2">
+                    {formik.errors.password}
+                  </span>
+                )}
+              </p>
               <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
                 placeholder="Masukkan kata password"
                 type={`${showPassword ? "text" : "password"}`}
                 className="p-[10px] border-gray-500 border-2 rounded-full bg-transparent"
@@ -81,13 +111,22 @@ export const Daftar = () => {
 
             <label className="flex gap-2 flex-col relative">
               <div className="flex gap-2">
-                Konfirmasi Kata Sandi
-                <span className="text-red-400">{error}</span>
+                <p className="">
+                  Konfirmasi Kata Sandi{" "}
+                  {formik.touched.passwordConfirm &&
+                    formik.errors.passwordConfirm && (
+                      <span className="text-red-500 ml-2">
+                        {formik.errors.passwordConfirm}
+                      </span>
+                    )}
+                </p>
               </div>
               <input
                 ref={confirmPasswordRef}
-                value={passwordConfirm}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
+                name="passwordConfirm"
+                onBlur={formik.handleBlur}
+                value={formik.values.passwordConfirm}
+                onChange={formik.handleChange}
                 placeholder="Konfirmasi kata password"
                 type="password"
                 className="p-[10px] border-gray-500 border-2 rounded-full bg-transparent"
@@ -98,12 +137,11 @@ export const Daftar = () => {
 
         <section className="flex justify-between relative md:text-md text-sm -mt-[14px] mb-4">
           <h1>
-            Sudah punya akun?
+            Sudah punya akun?{" "}
             <Link
               to="/masuk"
               className="font-bold cursor-pointer hover:underline"
             >
-              {" "}
               Masuk
             </Link>
           </h1>
@@ -111,7 +149,6 @@ export const Daftar = () => {
 
         <section className="flex flex-col gap-1 -mt-3">
           <button
-            onClick={(e) => handleDaftarClick(e)}
             type="submit"
             className="p-[6px] border-white w-full rounded-full cursor-pointer hover:underline bg-gray-500"
           >

@@ -4,7 +4,7 @@ import { DeleteMovie } from "../components/DeleteMovie";
 import { UpdateMovie } from "../components/UpdateMovie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Edit = () => {
   const [events, setEvents] = useState("");
@@ -14,6 +14,7 @@ export const Edit = () => {
   });
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate()
   const passwordAdmin = import.meta.env.VITE_PASS_ADMIN;
 
   const buttonClass =
@@ -95,12 +96,14 @@ export const Edit = () => {
             >
               Logout
             </button>
-            <Link
-              to="/series"
+            <button
+              onClick={() => {
+                navigate(-1)
+              }}
               className="text-sm cursor-default bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-md transition-colors"
             >
               MainPage
-            </Link>
+            </button>
           </div>
         </div>
       </div>

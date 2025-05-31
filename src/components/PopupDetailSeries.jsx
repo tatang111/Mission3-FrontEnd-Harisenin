@@ -39,7 +39,6 @@ export const PopupDetailSeries = ({ onClose }) => {
     } else if (theMovie?.src?.length < 15) {
       return `/imgpotrait/${theMovie.src}`;
     }
-    return theMovie.src;
   };
 
   const handleClickMulai = () => {
