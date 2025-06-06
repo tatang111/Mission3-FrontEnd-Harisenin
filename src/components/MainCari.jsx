@@ -46,7 +46,7 @@ export const MainCari = () => {
           onChange={(e) => setSearch(e.target.value)}
           value={search}
           placeholder="Cari film favorit..."
-          className="flex-1 bg-transparent outline-none text-sm md:text-base px-2 py-1"
+          className="flex-1 bg-transparent outline-none text-black text-sm md:text-base px-2 py-1"
         />
         <button
           type="submit"
