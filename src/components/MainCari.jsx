@@ -38,22 +38,24 @@ export const MainCari = () => {
     <div className="grid gap-7 mt-2">
       <form
         onSubmit={handleSubmit}
-        className="w-75 border-2 rounded-full border-orange-500 m-auto flex"
+        className="w-full max-w-md mx-auto flex items-center gap-2 bg-white border border-orange-400 rounded-full px-4 py-2 shadow-sm"
       >
         <input
           type="text"
           name="search"
           onChange={(e) => setSearch(e.target.value)}
           value={search}
-          className="border-0 outline-0 px-3 text-md"
+          placeholder="Cari film favorit..."
+          className="flex-1 bg-transparent outline-none text-sm md:text-base px-2 py-1"
         />
         <button
           type="submit"
-          className="cursor-pointer rounded-full p-4 px-6 bg-orange-500"
+          className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-full transition duration-300 text-sm md:text-base"
         >
-          Search
+          Cari
         </button>
       </form>
+
       <div className="w-9/10 mt-2 grid gap-8 sm:grid-cols-2 grid-cols-1 md:grid-cols-4 mx-auto pb-20">
         {error && <p>Failed to get Movie</p>}
         {isPending ? (
